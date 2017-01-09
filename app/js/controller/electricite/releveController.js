@@ -13,7 +13,6 @@
 
         $scope.getAllReleves = function() {
             ReleveService.getReleveMySql().then(function(data) {
-                //this will execute when the AJAX call completes.
                 $scope.releves = data;
             });
         };
