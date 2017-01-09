@@ -1,0 +1,22 @@
+{
+  "name": "electrik",
+  "description": "projet perso",
+  "version": "0.0.1",
+  "homepage": "https://github.com/angular/angular-seed",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-chart.js": "~0.8.3",
+    "angular-loader": "1.2.x",
+    "angular-mocks": "~1.2.x",
+    "angular-resource": "1.2.16",
+    "angular-route": "1.2.x",
+    "html5-boilerplate": "~4.3.0",
+    "uikit": "2.6.0"
+  },
+  "resolutions": {
+    "angular": "1.2.x",
+    "jquery": "~1.8"
+  }
+}

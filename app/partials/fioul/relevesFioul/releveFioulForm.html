@@ -1,0 +1,31 @@
+<!--le novalidate permet d'eviter d'avoir la gestion des erreurs natives-->
+<form name="releveForm">
+    <legend>Ajout / Modification d'un relev&eacute;</legend>
+
+    <div class="row ">
+        <!--date et heure du releve-->
+        <label class="col-md-6" for="dateHeure">Date du relev&eacute;&nbsp;:</label>
+        <div class="col-md-6 form-group">
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy HH:mm:ss" ng-model="releve.dateHeure" is-open="$parent.opened" datepicker-options="dateOptions" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="open($event)">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+    </div>
+    <div class="row form-group">
+        <!--volume en litre-->
+        <label class="col-md-6" for="indexHP">Volume&nbsp;:</label>
+        <div class="col-md-6 ">
+            <input type="number" ng-model="releve.volume" name="volume" placeholder="volume" required>
+        </div>
+    </div>
+    <hr>
+    <button class="btn" ng-click="newReleve()">Nouveau</button> |
+    <button class="btn btn-primary" ng-disabled="releveForm.$invalid" ng-click="saveReleve(releve)">Valider</button> |
+    <hr>
+
+</form>

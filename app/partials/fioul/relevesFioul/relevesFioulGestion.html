@@ -1,0 +1,15 @@
+<h2>Gestion des relev&eacute;s</h2>
+<div class="row" ng-controller="RelevesFioulController"> <!-- on n'oublie pas la directive ng-controller -->
+
+    <div class="col-md-6">
+        <!-- FORMULAIRE : Ici nous aurons notre formulaire de saisie -->
+        <div ng-include="'partials/fioul/relevesFioul/releveFioulForm.html'" ></div>
+        <!--fin du formulaire-->
+    </div>
+
+    <div class="col-md-6">
+        <!-- GRILLE : Ici nous aurons la liste des releves -->
+        <div ng-include="'partials/fioul/relevesFioul/relevesFioulList.html'" ></div>
+    </div>
+
+</div>

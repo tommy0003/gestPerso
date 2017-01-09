@@ -1,0 +1,39 @@
+<h2>Identification</h2>
+<div class="row page-content" ng-controller="LoginController">
+
+    <form name="loginForm" novalidate>
+
+
+        <div class="row control-group">
+            <div class="col-md-2">
+                <label for="userName">Identifiant :</label>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="userName" ng-model="userName" />
+            </div>
+
+            <div class="col-md-3">
+                <p class="col-sm-offset-3 help-block error" ng-show="invalid == true">Erreur d'authentification</p>
+            </div>
+
+        </div>
+        <div class="row control-group">
+            <div class="col-md-2">
+                <label for="password">Mot de passe :</label>
+            </div>
+            <div class="col-md-2">
+                <input type="password" name="password" ng-model="password" />
+            </div>
+        </div>
+
+        <div class="row control-group">
+            <div class="col-md-2"> </div>
+            <div class="col-md-3">
+                <button class="btn btn-default" ng-click="login()">Connexion</button>
+                <button class="btn btn-default" ng-click="cancel()">Reset</button>
+            </div>
+        </div>
+    </form>
+
+
+</div>

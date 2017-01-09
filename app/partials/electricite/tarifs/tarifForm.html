@@ -1,0 +1,63 @@
+<form name="tarifForm">
+    <legend>Ajout / Modification des tarifs</legend>
+
+    <div class="row form-group ">
+        <!--date debut du tarif-->
+        <label class="col-md-6" for="dateDebutTarif">Date d&eacute;but&nbsp;:</label>
+        <div class="col-md-6 ">
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="tarif.dateDebut" is-open="$parent.opened1" datepicker-options="dateOptions" required />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="open($event, 'opened1')">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <div class="row form-group ">
+        <!--date debut du tarif-->
+        <label class="col-md-6" for="dateFinTarif">Date fin&nbsp;:</label>
+        <div class="col-md-6 ">
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="tarif.dateFin" is-open="$parent.opened2" datepicker-options="dateOptions" required />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="open($event, 'opened2')">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <!--tarif heure pleine-->
+        <label class="col-md-6" for="indexHP">Tarif heure pleine&nbsp;:</label>
+        <div class="col-md-6 ">
+        	<input type="number" step="any" ng-model="tarif.tarifHP" name="tarifHP" placeholder="tarif HP"  required>
+        </div>
+    </div>
+    <div class="row form-group">
+        <!--tarif heure creuse-->
+        <label class="col-md-6" for="indexHP">Tarif heure creuse&nbsp;:</label>
+        <div class="col-md-6 ">
+       		<input type="number" step="any" ng-model="tarif.tarifHC" name="tarifHC" placeholder="tarif HC"  required>
+       	</div>
+    </div>
+
+    <div class="row form-group">
+        <!--tarif mensuel abonnement-->
+        <label class="col-md-6" for="indexHP">Tarif abonnement mensuel&nbsp;:</label>
+        <div class="col-md-6 ">
+        	<input type="number" step="any" ng-model="tarif.tarifAbo" name="tarifAbo" placeholder="tarif Abonnement"  required>
+        </div>
+    </div>
+
+    <hr>
+    <button class="btn" ng-click="newTarif()">Nouveau</button> |
+    <button class="btn btn-primary" ng-disabled="tarifForm.$invalid" ng-click="saveTarif(tarif)">Valider</button> |
+    <hr>
+
+</form>
+

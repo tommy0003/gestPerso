@@ -1,0 +1,44 @@
+<h2>Données journalieres</h2>
+<div class="row " ng-controller="GestionJournaliereController"> <!-- on n'oublie pas la directive ng-controller -->
+
+    <div class="col-md-6">
+        <!--le formulaire de choix du jour-->
+        <form name="releveForm">
+            <div class="row ">
+                <!-- date reference -->
+                <div class="col-md-6">
+                    <label for="dateHeure">Choix du jour&nbsp;:</label>
+                    <p class="input-group">
+                        <input type="text" class="form-control col-md-3" datepicker-popup="dd/MM/yyyy"
+                               ng-model="dt" is-open="opened1" datepicker-options="dateOptions" ng-change="changeJour()" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" ng-click="open($event, 'opened1')">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                    </p>
+                </div>
+                <!-- date de comparaison -->
+                <div class="col-md-6">
+                    <label for="dateCompare">Comparer avec jour&nbsp;:</label>
+                    <p class="input-group">
+                        <input type="text" class="form-control col-md-3" datepicker-popup="dd/MM/yyyy"
+                               ng-model="dtCompare" is-open="opened2"  datepicker-options="dateOptions" ng-change="compare()" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="open($event, 'opened2')">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- liste des releves du mois-->
+    <div class="uk-panel" ng-include="'partials/electricite/gestionJournaliere/relevesJournalierList.html'" ></div>
+
+    <!-- graphique -->
+    <legend>Evolution consommations {{ libJour }} </legend>
+    <div class="uk-panel" ng-include="'partials/electricite/gestionJournaliere/graphiqueJournalier.html'" ></div>
+

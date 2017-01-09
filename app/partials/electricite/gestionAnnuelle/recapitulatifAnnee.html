@@ -1,0 +1,41 @@
+<legend >Donn&eacute;es de l'ann&eacute;e {{ anneeEnCours }} :</legend>
+<table class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>Mois</th>
+            <th>Kwh HP</th>
+            <th>Kwh HC</th>
+            <th>Kwh Total</th>
+            <th>% HC</th>
+            <th>Moy jour (Kwh)</th>
+            <th>Moy jour (&euro;)</th>
+            <th>Facture calcul&eacute;</th>
+            <th>Evolution N-1 (%)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="donnee in donneesAnnuelles[anneeEnCours]">
+            <td>{{ donnee.libMois }}     </td>
+            <td>{{ donnee.consoHP | number: 2}}</td>
+            <td>{{ donnee.consoHC | number: 2}}</td>
+            <td>{{ donnee.consoTotale | number: 2 }}</td>
+            <td>{{ donnee.pourcentageHC | pourcentage :2 }}</td>
+            <td>{{ donnee.consoJour | number: 2 }}</td>
+            <td>{{ donnee.prixJour | currency: "&euro;" }}</td>
+            <td>{{ donnee.factureCalculee | currency: "&euro;" }}</td>
+            <td ng-class="{'green': donnee.evolutionN1 < 0, 'red': donnee.evolutionN1 >= 0,  }" >{{ donnee.evolutionN1 | pourcentageEvolution :2 }}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+    	<tr>
+            <th>Totaux</th>
+            <th>{{ sommesEtMoy[anneeEnCours].sommeConsoHP | number: 2 }}</th>
+            <th>{{ sommesEtMoy[anneeEnCours].sommeConsoHC | number: 2 }}</th>
+            <th>{{ sommesEtMoy[anneeEnCours].sommeConsoTotale | number: 2 }}</th>
+            <th>{{ sommesEtMoy[anneeEnCours].pourcentageMoyen | pourcentage :2 }}</th>
+            <th>{{ sommesEtMoy[anneeEnCours].moyenneConsoJour | number : 2 }}</th>
+            <th>{{ sommesEtMoy[anneeEnCours].moyennePrixJour | currency: "&euro;" }}</th>
+            <th>{{ sommesEtMoy[anneeEnCours].sommeFacture | currency: "&euro;" }}</th>
+        </tr>
+    </tfoot>    
+</table>

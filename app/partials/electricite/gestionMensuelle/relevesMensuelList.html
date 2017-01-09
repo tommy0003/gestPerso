@@ -1,0 +1,35 @@
+<legend>Donn&eacute;es du mois de {{ libelleAnneeMois }}:</legend>
+<table class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>Date et heure</th>
+            <th>Wh HP Jour</th>
+            <th>Wh HC Jour</th>
+            <th>Wh Totale Jour</th>
+            <th>Montant conso (&euro;)</th>
+            <th>Wh HP Cumul</th>
+            <th>Wh HC Cumul</th>
+            <th>Wh Total Cumul</th>
+            <th>% HC</th>
+            <th>Moy jour (Kwh)</th>
+            <th>Moy jour (&euro;)</th>
+            <th>Estimation Facture</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="releve in releves" ng-class="$last ? 'bold' : 'normal'" >
+            <td>{{ releve.dateHeure  | date:'dd/MM/yyyy' }}     </td><!-- filtre date format-->
+            <td>{{ consoHPJour(releve) | number : 3 }}                            </td>
+            <td>{{ consoHCJour(releve) | number : 3 }}                            </td>
+            <td>{{ consoTotaleJour(releve) | number : 3 }}                            </td>
+            <td>{{ montantConso(releve) | currency: "&euro;" }} </td><!-- filtre montant-->
+            <td>{{ consoHPCumul(releve) }}                           </td>
+            <td>{{ consoHCCumul(releve) }}                           </td>
+            <td>{{ consoTotaleCumul(releve)  | number : 3 }}                       </td>
+            <td>{{ pourcentageHC(releve) | pourcentage :2 }}    </td><!-- filtre pourcentage avec 2 decimal-->
+            <td>{{ consoJour(releve) | number : 2}}             </td>
+            <td>{{ prixJour(releve) | currency: "&euro;"}}      </td>
+            <td>{{ factureEstime(releve) | currency: "&euro;"}} </td>
+        </tr>
+    </tbody>
+</table>

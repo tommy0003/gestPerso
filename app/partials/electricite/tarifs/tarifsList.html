@@ -1,0 +1,38 @@
+<div class="uk-panel">
+
+    <legend>Liste des Tarifs</legend>
+
+    <!--formulaire de filtre-->
+    <form>
+        <span>Filtre :</span>
+        <input ng-model="search.$" placeholder="filtrer les tarifs">
+    </form>
+
+    <table class="table table-bordered table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>Date debut</th>
+                <th>Date fin</th>
+                <th>Tarif HP</th>
+                <th>Tarif HC</th>
+                <th>Tarif Abo.</th>
+                <th></th>
+             </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="tarif in tarifs | orderBy: 'dateDebut': 'reverse' | filter:search">
+                <!--titre en majuscule-->
+                <td>{{tarif.dateDebut  | date:'dd/MM/yyyy'}}</td>
+                <td>{{tarif.dateFin  | date:'dd/MM/yyyy'}}</td>
+                <td>{{tarif.tarifHP }}</td>
+                <td>{{tarif.tarifHC }}</td>
+                <td>{{tarif.tarifAbo }}</td>
+                <td>
+                	<span class="editer" ng-click="selectTarif(tarif)"></span>
+                	<span class="supprimer" ng-click="deleteTarif(tarif._id)"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

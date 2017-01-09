@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Electrik app</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+
+    <!--angular charts-->
+    <script src='bower_components/Chart.js/Chart.js'></script>
+    <script src='bower_components/angular-chart.js/dist/angular-chart.min.js'></script>
+
+    <!--angular file upload-->
+    <script src="bower_components/ng-file-upload/angular-file-upload.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    
+    <!-- controller transverses -->
+    <script src="js/controller/headerController.js"></script>
+    <!-- electricite -->
+    <script src="js/controller/electricite/releveController.js"></script>
+    <script src="js/controller/electricite/tarifController.js"></script>
+    <script src="js/controller/electricite/gestionMensuelleController.js"></script>
+    <script src="js/controller/electricite/gestionAnnuelleController.js"></script>
+    <script src="js/controller/electricite/factureController.js"></script>
+    <script src="js/controller/electricite/prochaineFactureController.js"></script>
+    <script src="js/controller/electricite/gestionJournaliereController.js"></script>
+    <!-- eau -->
+    <script src="js/controller/eau/factureEauController.js"></script>
+    <script src="js/controller/eau/gestionAnnuelleEauController.js"></script>
+    <!-- fioul -->
+    <script src="js/controller/fioul/releveFioulController.js"></script>
+    <script src="js/controller/fioul/factureFioulController.js"></script>
+    <script src="js/controller/fioul/gestionAnnuelleFioulController.js"></script>
+    
+    <script src="js/filters.js"></script>
+    <script src="js/directives.js"></script>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- bootstrap month picker-->
+    <script src="bower_components/bootstrap/dist/js/ui-bootstrap-tpls-0.11.0.js"></script>
+
+
+    <!-- Bootstrap Datetimepicker CSS file -->
+    <link href="bower_components/bootstrap.v3-datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <!-- CSS angular charts -->
+    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
+    <!-- Moment.js -->
+    <script src="bower_components/bootstrap.v3-datetimepicker/moment.js"></script>
+    <!-- Bootstrap Datetimepicker -->
+    <script src="bower_components/bootstrap.v3-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+
+
+    <!--css perso-->
+    <link rel="stylesheet" href="css/app.css"/>
+
+</head>
+
+<body class="darva">
+
+    <div class="container page">
+        <div class="bandeau"></div>
+
+        <div class="bandeauUser" ng-controller="HeaderController" >
+            <!-- info utilisateur -->
+            <p ng-if="isAuthentifie()" style="margin:0">
+                Connecté en tant que <b>{{$root.userInfo.userName}}</b>,<a ng-click="logout()" class="btn btn-link">Déconnexion</a>
+            </p>
+        </div>
+
+        <div class="row">
+            <!--le menu principal , affiché seulement si authentifié-->
+            <div class="col-md-2 menuPrincipal" ng-controller="HeaderController">
+                <ul class="nav nav-pills nav-stacked" ng-if="isAuthentifie()">
+
+
+                    <li class="subtitle"><a>Gestion &eacute;l&eacute;ctricit&eacute;</a></li>
+                    <li>
+                        <ul class="nav nav-pills nav-stacked">
+
+                            <li ng-class="{ active: isActive('/relevesGestion')}"><a href="#/relevesGestion">Gestion des relev&eacute;s</a></li>
+                            <li ng-class="{ active: isActive('/tarifsGestion')}"><a href="#/tarifsGestion">Gestion des tarifs</a></li>
+                            <li ng-class="{ active: isActive('/facturesGestion')}"><a href="#/facturesGestion">Gestion des factures</a></li>
+                            <li ng-class="{ active: isActive('/gestionJournaliere')}"><a href="#/gestionJournaliere">Donnees journaliere</a></li>
+                            <li ng-class="{ active: isActive('/gestionMensuelle')}"><a href="#/gestionMensuelle">Statistiques mensuelles</a></li>
+                            <li ng-class="{ active: isActive('/gestionAnnuelle')}"><a href="#/gestionAnnuelle">Statistiques annuelles</a></li>
+                            <li ng-class="{ active: isActive('/prochaineFacture')}"><a href="#/prochaineFacture">Prochaine facture</a></li>
+                        </ul>
+                    </li>
+                    <li class="subtitle"> <a>Gestion eau</a> </li>
+                    <li>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li ng-class="{ active: isActive('/facturesEauGestion')}"><a href="#/facturesEauGestion">Gestion des factures</a></li>
+                            <li ng-class="{ active: isActive('/gestionEauAnnuelle')}"><a href="#/gestionEauAnnuelle">Statistiques annuelles</a></li>
+                        </ul>
+                    </li>
+                    <li class="subtitle"> <a>Gestion fioul</a> </li>
+                    <li>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li ng-class="{ active: isActive('/relevesFioulGestion')}"><a href="#/relevesFioulGestion">Gestion des relev&eacute;s</a></li>
+                            <li ng-class="{ active: isActive('/facturesFioulGestion')}"><a href="#/facturesFioulGestion">Gestion des factures</a></li>
+                            <li ng-class="{ active: isActive('/gestionFioulAnnuelle')}"><a href="#/gestionFioulAnnuelle">Statistiques annuelles</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <br/>
+            </div>
+
+            <div class="col-md-10">
+              <!--[if lt IE 7]>
+                  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+              <![endif]-->
+              <div ng-view></div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

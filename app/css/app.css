@@ -1,0 +1,74 @@
+/* app css stylesheet */
+body{
+    margin:15px;
+    background: url("../img/background.jpg");
+}
+
+body.darva{
+	background: url('../img/fondegradebleu.jpg') left top fixed repeat-x #c2cbd2;
+}
+
+.bandeau{
+    background: url('../img/bandeau.png')  no-repeat ;
+    height: 85px;
+}
+
+.page{
+    background:white;
+    min-height: 900px;
+    padding:15px;
+}
+
+.bold{font-weight: bold;}
+
+.normal{font-weight: normal}
+
+.red{color: red}
+.green{color: green}
+
+.tm-sidebar {
+    border-right: 1px solid #e5e5e5;
+    margin-right: -1px !important;
+}
+
+.menuPrincipal{
+    margin-top:10px;
+    min-height: 900px;
+}
+
+/* bandeau d'affichage des info de l'utilisateur*/
+.bandeauUser{
+    float:right;
+    border:0px solid #000000;
+}
+
+li.subtitle a, li.subtitle a:hover{
+    background:navy;
+    color:white;
+}
+
+/* titre page*/
+.uk-article-title{
+	font-size: 20px;
+	font-weight: bold;	
+}
+
+.editer, .supprimer, .consulterPdf{
+    display:inline-block;
+    width:24px;
+    height: 24px;
+}
+
+.editer{    background: url("../img/icons/editer_24.png");}
+.supprimer{   background: url("../img/icons/supprimer_24.png");}
+.consulterPdf{ background: url("../img/icons/pdf_24.png");}
+
+.tableTarifMensuel{
+    border: 1px solid black;
+}
+
+table{
+    font-size:13px;
+    vertical-align:middle;
+    margin-right:10px;
+}

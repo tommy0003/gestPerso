@@ -1,0 +1,161 @@
+<!--le novalidate permet d'eviter d'avoir la gestion des erreurs natives-->
+<form name="factureForm">
+    <legend>Ajout / Modification d'une facture</legend>
+
+    <div class="row form-group">
+        <!-- numero de facture -->
+        <label class="col-md-3" for="numFacture" >N&#186; Facture&nbsp;:</label>
+        <div class="col-md-3">
+            <input type="text" ng-model="facture.numFacture" name="numFacture" placeholder="numero facture" ng-maxlength="25" required>
+        </div>
+        <!-- date de prelevement -->
+        <label class="col-md-3" for="dateHeure">Date pr&eacute;levement&nbsp;:</label>
+        <div class="col-md-3">
+             <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="facture.datePrelevement" is-open="$parent.openedDatePrelevement" datepicker-options="dateOptions" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="open($event, 'openedDatePrelevement')">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <!-- date debut conso -->
+        <label class="col-md-3" for="dateDebutConso">Date D&eacute;but conso&nbsp;:</label>
+        <div class="col-md-3">
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="facture.dateDebutConso" is-open="$parent.openedDateDebutConso" datepicker-options="dateOptions" required />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="open($event, 'openedDateDebutConso')">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+        <!-- date fin conso -->
+        <label class="col-md-3" for="dateFinConso">Date Fin conso&nbsp;:</label>
+        <div class="col-md-3">
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="facture.dateFinConso" is-open="$parent.openedDateFinConso" datepicker-options="dateOptions" required />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="open($event, 'openedDateFinConso')">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <!--montant HP HT conso : float-->
+        <label class="col-md-3" for="montantHorsTaxesHPConso">Montant HT Heures pleines&nbsp;:</label>
+        <div class="col-md-3">
+            <input step="any" ng-model="facture.montantHorsTaxesHPConso" name="montantHorsTaxesHPConso" placeholder="montant HT HP" type="number" required>
+        </div>
+        <!--montant HC HT conso : float-->
+        <label class="col-md-3" for="montantHorsTaxesHCConso">Montant HT Heures creuses&nbsp;:</label>
+        <div class="col-md-3">
+            <input step="any" ng-model="facture.montantHorsTaxesHCConso" name="montantHorsTaxesHCConso" placeholder="montant HT HC" type="number" required>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <!--ancien index HP : int-->
+        <label class="col-md-3" for="ancienIndexHP">Ancien index HP&nbsp;:</label>
+        <div class="col-md-3">
+            <input ng-model="facture.ancienIndexHP" name="ancienIndexHP" placeholder="Ancien index HP" type="number" required>
+        </div>
+        <!--nouveau index HP : int-->
+        <label class="col-md-3" for="ancienIndexHP">Nouvel index HP&nbsp;:</label>
+        <div class="col-md-3">
+            <input ng-model="facture.nouvelIndexHP" name="nouvelIndexHP" placeholder="Nouvel index HP" type="number" required>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <!--ancien index HC : int-->
+        <label class="col-md-3" for="ancienIndexHC">Ancien index HC&nbsp;:</label>
+        <div class="col-md-3">
+            <input ng-model="facture.ancienIndexHC" name="ancienIndexHC" placeholder="Ancien index HC" type="number" required>
+        </div>
+        <!--nouveau index HC : int-->
+        <label class="col-md-3" for="nouvelIndexHC">Nouvel index HC&nbsp;:</label>
+        <div class="col-md-3">            
+            <input ng-model="facture.nouvelIndexHC" name="nouvelIndexHC" placeholder="Nouvel index HC" type="number" required>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <!-- date debut abo -->
+        <label class="col-md-3" for="dateDebutAbo">Date D&eacute;but abonnement&nbsp;:</label>
+        <div class="col-md-3">
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="facture.dateDebutAbo" is-open="$parent.openedDateDebutAbo" datepicker-options="dateOptions" required />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="open($event, 'openedDateDebutAbo')">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+        <!-- date fin abo -->
+        <label class="col-md-3" for="dateFinAbo">Date Fin abonnement&nbsp;:</label>
+        <div class="col-md-3"> 
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="facture.dateFinAbo" is-open="$parent.openedDateFinAbo" datepicker-options="dateOptions" required />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="open($event, 'openedDateFinAbo')">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <!--montant HT abo : float-->
+        <label class="col-md-3" for="montantHTAbo">Montant HT abonnement&nbsp;:</label>
+        <div class="col-md-3">
+            <input step="any" ng-model="facture.montantHTAbo" name="montantHTAbo" placeholder="Montant HT abo" type="number" required>
+        </div>
+        <!--montant TVA : float-->
+        <label class="col-md-3" for="dateFinConso">Montant TVA&nbsp;:</label>
+        <div class="col-md-3">            
+            <input step="any" ng-model="facture.montantTVA" name="montantTVA" placeholder="montant TVA" type="number" required>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <!--montant autres taxes : float-->
+        <label class="col-md-3" for="montantHTAbo">Montant Autres taxes&nbsp;:</label>
+        <div class="col-md-3">            
+            <input step="any" ng-model="facture.montantAutresTaxes" name="montantAutresTaxes" placeholder="Montant Autres taxes" type="number" required>
+        </div>
+        <!--montant total TTC : float-->
+        <label class="col-md-3" for="montantTTC">Montant TTC&nbsp;:</label>
+        <div class="col-md-3">            
+            <input step="any" ng-model="facture.montantTTC" name="montantTTC" placeholder="montant TTC" type="number" required>
+        </div>
+    </div>
+    
+    <div class="row form-group">
+        <!-- facture en PDF-->
+        <label class="col-md-3" for="montantTTC">Facture en PDF&nbsp;:</label>
+        <div class="col-md-9">
+            <!--serialize le chemin du fichier-->
+            <input type="text" ng-model="facture.pieceJointe" />
+            <!--gere l'upload en ajax-->
+            <input type="file" ng-file-select="onFileSelect($files)">
+            <button ng-click="upload.abort()">Cancel Upload</button>
+        </div>
+    </div>
+
+    <hr>
+    <button class="btn" ng-click="newFacture()">Nouveau</button> |
+    <button class="btn btn-primary" ng-disabled="factureForm.$invalid" ng-click="saveFacture(facture)">Valider</button> |
+    <hr>
+
+</form>

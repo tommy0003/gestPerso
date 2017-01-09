@@ -1,0 +1,27 @@
+<legend>Liste des Relev&eacute;s</legend>
+<!--formulaire de filtre-->
+<form>
+    <span>Filtre :</span>
+    <input ng-model="search.$" placeholder="filtrer les releves">
+</form>
+
+<table class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>Date et heure</th>
+            <th>Volume</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="releve in pageItems() ">
+            <td>{{releve.dateHeure | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+            <td>{{releve.volume}}</td>
+            <td>
+            	<span class="editer" ng-click="selectReleve(releve)"></span>
+            	<span class="supprimer" ng-click="deleteReleve(releve._id)"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<span paginator items="releves | orderBy: 'dateHeure': 'reverse'| filter:search"></span>

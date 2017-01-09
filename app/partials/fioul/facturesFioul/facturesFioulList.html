@@ -1,0 +1,40 @@
+<div class="row">
+	<div class="col-md-6">
+	  	<legend >Liste des Factures</legend>
+	</div>
+	<div class="col-md-6">
+	  	<!--formulaire de filtre-->
+	  	<form>
+	       <span>Filtre :</span>
+	       <input ng-model="search.$" placeholder="filtrer les factures">
+	    </form>
+	 </div>
+</div>
+<table class="table table-bordered table-striped table-condensed">
+    <thead>
+     <tr>
+         <th>N&#186; Facture</th>
+         <th>Date facturation</th>
+         <th>Volume</th>
+         <th>Montant TVA</th>
+         <th>Total TTC</th>
+         <th></th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr ng-repeat="facture in pageItems() | orderBy: 'dateDebutConso': 'reverse' | filter:search">
+         <td>{{facture.numFacture }}</td>
+         <td>{{facture.dateFacturation  | date:'dd/MM/yyyy'}}</td>
+         <td>{{facture.volume | currency:'&euro;'}}</td>
+         <td>{{facture.montantTVA  | currency:'&euro;'}}</td>
+         <td>{{facture.montantTTC | currency: '&euro;' }}</td>
+         <td>
+         	<span class="editer" ng-click="selectFacture(facture)"></span>
+         	<span class="supprimer" ng-click="deleteFacture(facture._id)"></span>
+             <!--si une piece jointe est presente-->
+            <a ng-if="hasPJ(facture)" href="./upload/{{facture.pieceJointe}}" target="_blank"><span class="consulterPdf" ></span></a>
+         </td>
+     </tr>
+    </tbody>
+</table>   
+<span paginator items="factures | orderBy: 'dateDebut': 'reverse'| filter:search" pageSize="5"></span>

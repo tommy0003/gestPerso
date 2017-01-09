@@ -1,0 +1,64 @@
+<h2>Prochaine Facture</h2>
+<div class="row " ng-controller="ProchaineFactureController"> <!-- on n'oublie pas la directive ng-controller -->
+   
+    
+    <!-- partie fixe -->
+    <div class="col-md-12">
+    	<legend>Part fixe</legend>
+        <table class="table table-bordered table-condensed" >
+    		<thead>
+    			<tr>
+	    			<th>Tarif Abonnement Mensuel</th>
+	    			<th>Nombre de mois</th>
+	    			<th>Montant Abonnement</th>
+	    		</tr>
+    		</thead>
+    		<tbody>
+    			<tr>
+	    			<td>{{ tarifApplicable.montantAbo | currency: "&euro;" }}</td>
+	    			<td>{{ nbMoisAbo }}</td>
+	    			<td><strong>{{ prochaineFacture.montantAbo | currency: "&euro;" }}</strong></td>
+	    		</tr>
+    		</tbody>    		
+    	</table>
+    </div>
+    
+    <!-- partie variable -->
+    <div class="col-md-12">
+    	<legend>Part variable</legend>
+    	<table class="table table-bordered table-condensed" >
+    		<thead>
+    			<tr>
+    				<th>Libell&eacute;</th>
+	    			<th>Ancien index HP</th>
+	    			<th>Nouvel index HP</th>
+	    			<th>Consommation</th>
+                    <th>Tarif</th>
+                    <th>Montant</th>
+	    		</tr>
+    		</thead>
+    		<tbody>
+    			<tr>
+                    <td>Consommation HP du {{ lastFacture.dateFinConso | date:'dd/MM/yyyy' }} au {{ lastReleve.dateHeure | date:'dd/MM/yyyy' }}</td>
+	    			<td>{{ lastFacture.ancienIndexHP }}</td>
+	    			<td>{{ prochaineFacture.nouvelIndexHP }}</td>
+	    			<td>{{ prochaineFacture.consoHP }}</td>
+                    <td>{{ tarifApplicable.tarifHP }}</td>
+                    <td><strong>{{ prochaineFacture.montantHP | currency: "&euro;" }}</strong></td>
+	    		</tr>
+
+                <tr>
+                    <td>Consommation HC du {{ lastFacture.dateFinConso | date:'dd/MM/yyyy' }} au {{ lastReleve.dateHeure | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ lastFacture.ancienIndexHC }}</td>
+                    <td>{{ prochaineFacture.nouvelIndexHC }}</td>
+                    <td>{{ prochaineFacture.consoHC }}</td>
+                    <td>{{ tarifApplicable.tarifHC }}</td>
+                    <td><strong>{{ prochaineFacture.montantHC | currency: "&euro;" }}</strong></td>
+                </tr>
+    		</tbody>    		
+    	</table>
+
+        <legend>Montant TTC : {{ prochaineFacture.montantTotal | currency: "&euro;"}}</legend>
+    </div>
+    
+</div>  

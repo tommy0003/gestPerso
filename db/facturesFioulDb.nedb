@@ -1,0 +1,3 @@
+{"numFacture":"67316","volume":1046,"montantTVA":129.18,"montantTTC":775.09,"prixUnitaire":0.741,"dateFacturation":"2015-05-04T22:00:00.000Z","dateFacture":1430776800000,"_id":"4gSXA4bD7lrobOlC","pieceJointe":"Facture_2015145675.pdf"}
+{"numFacture":"40134","dateFacturation":"2016-04-30T22:00:00.000Z","volume":600,"montantTTC":348,"prixUnitaire":0.58,"dateFacture":1462053600000,"_id":"agKkBSC4rnQDUsmN"}
+{"numFacture":"0001","dateFacturation":"2015-02-27T23:00:00.000Z","volume":600,"prixUnitaire":0.66,"montantTVA":0,"montantTTC":396,"dateFacture":1425078000000,"_id":"d8OY8j1xE8bvipqO"}

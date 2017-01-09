@@ -1,0 +1,25 @@
+<legend >Consommation par facture:</legend>
+<table class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>Periode</th>
+            <th>Nb jour</th>
+            <th>Volume</th>
+            <th>vol. Moy mois (m&sup3;)</th>
+            <th>vol. Moy jour (l)</th>
+            <th>prix Moy mois (&euro;)</th>
+            <th>montant</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="donnee in donnees">
+            <td>du {{ donnee.dateDebut | date:'dd/MM/yyyy'}} au {{ donnee.dateFin | date:'dd/MM/yyyy'}}</td>
+            <td>{{ donnee.nbJour |number :0}}</td>
+            <td>{{ donnee.volume }}</td>
+            <td>{{ donnee.volumeMoyMois | number:3}}</td>
+            <td>{{ donnee.volumeMoyJour | number:0}}</td>
+            <td>{{ donnee.prixMoyMois | currency:'&euro;'}}</td>
+            <td>{{ donnee.montant | currency:'&euro;'}}</td>
+        </tr>
+    </tbody>
+</table>

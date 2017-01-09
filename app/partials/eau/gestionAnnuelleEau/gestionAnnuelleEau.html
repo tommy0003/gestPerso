@@ -1,0 +1,12 @@
+<h2>Gestion annuelle</h2>
+<div ng-controller="GestionAnnuelleEauController"> <!-- on n'oublie pas la directive ng-controller -->
+
+
+    <!-- tableau de l'annee -->
+    <div ng-include="'partials/eau/gestionAnnuelleEau/recapitulatifAnneeEau.html'" ></div>
+
+    <legend>Evolution consommations eau en m3 mensuel :</legend>
+
+    <!-- graphique-->
+    <div  ng-include="'partials/eau/gestionAnnuelleEau/graphiqueAnnuelEau.html'" ></div>
+</div>

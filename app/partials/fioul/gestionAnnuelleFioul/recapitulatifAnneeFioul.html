@@ -1,0 +1,30 @@
+<legend >Consommation par facture:</legend>
+<table class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>Mois</th>
+            <th>Volume</th>
+            <th>litres/jour </th>
+            <th>Prix Moy jour (&euro;)</th>
+            <th>Montant</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="donnee in donneesAnnuelles[anneeEnCours]">
+            <td>{{ donnee.libMois}}</td>
+            <td>{{ donnee.conso }}</td>
+            <td>{{ donnee.consoJour | number:3}}</td>
+            <td>{{ donnee.prixJour | currency:'&euro;'}}</td>
+            <td>{{ donnee.montant | currency:'&euro;'}}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Totaux</th>
+            <th>{{ sommesEtMoy[anneeEnCours].sommeConso | number :0 }}</th>
+            <th>{{ sommesEtMoy[anneeEnCours].moyenneConsoJour | number : 2 }}</th>
+            <th>{{ sommesEtMoy[anneeEnCours].moyennePrixJour | currency: "&euro;" }}</th>
+            <th>{{ sommesEtMoy[anneeEnCours].sommeMontantConso | currency: "&euro;" }}</th>
+        </tr>
+    </tfoot>
+</table>

@@ -1,0 +1,14 @@
+<h2>Gestion des factures</h2>
+<div class="row" ng-controller="FacturesController"> <!-- on n'oublie pas la directive ng-controller -->
+
+	<!-- GRILLE : Ici nous aurons la liste des factures -->
+	<div ng-include="'partials/electricite/factures/facturesList.html'" ></div>
+	
+	<div>&nbsp;</div>
+		
+	<!-- FORMULAIRE : Ici nous aurons notre formulaire de saisie -->
+	<div ng-include="'partials/electricite/factures/factureForm.html'" ></div>
+	<!--fin du formulaire-->
+
+</div>
+

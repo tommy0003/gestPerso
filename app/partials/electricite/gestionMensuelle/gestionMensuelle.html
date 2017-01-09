@@ -1,0 +1,34 @@
+<h2>Gestion mensuelle</h2>
+<div class="row " ng-controller="GestionMensuelleController"> <!-- on n'oublie pas la directive ng-controller -->
+
+    <div class="col-md-6">
+        <!--le formulaire de choix du mois-->
+        <form name="releveForm">
+            <div class="row ">
+                <!--date et heure du relevé-->
+              <label for="dateHeure">Choix du mois&nbsp;:</label>             
+              <p class="input-group">
+                <input type="text" class="form-control col-md-3" datepicker-popup="MM/yyyy" min-mode="month" datepicker-mode="'month'"
+                    ng-model="dt" is-open="opened" close-on-date-selection="true" datepicker-options="dateOptions"
+                    date-disabled="disabled(date, mode)" show-button-bar="false" show-weeks="false" ng-change="changeMois()" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="open($event)">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+              </p>
+            </div>
+        </form>
+</div>    
+<!--tableau des tarifs-->
+<div class="col-md-6">
+    <div class="uk-panel" ng-include="'partials/electricite/gestionMensuelle/tarifEnCours.html'" ></div>
+</div>
+
+<!-- liste des releves du mois-->
+<div class="uk-panel" ng-include="'partials/electricite/gestionMensuelle/relevesMensuelList.html'" ></div>
+
+<!-- graphique-->
+<legend>Evolution consommations {{ libelleAnneeMois }} </legend>
+<div class="uk-panel" ng-include="'partials/electricite/gestionMensuelle/graphiqueMensuel.html'" ></div>
+

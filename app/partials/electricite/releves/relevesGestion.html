@@ -1,0 +1,33 @@
+<h2>Liste des Relevés</h2>
+<div ng-controller="RelevesController"> <!-- on n'oublie pas la directive ng-controller -->
+
+    <!--formulaire de filtre-->
+    <form>
+        <span>Filtre :</span>
+        <input ng-model="search.$" placeholder="filtrer les relevés">
+    </form>
+    <br/>
+
+    <table class="table table-bordered table-striped table-condensed">
+        <thead>
+        <tr>
+            <th>Date et heure</th>
+            <th>Index HP</th>
+            <th>Index HC</th>
+            <th>Intensité max</th>
+            <th>Heure creuse</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="releve in pageItems() ">
+            <td>{{releve.dateHeure | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+            <td>{{releve.indexHP}}</td>
+            <td>{{releve.indexHC }}</td>
+            <td>{{releve.intensiteMax }}</td>
+            <td>{{releve.heureCreuse  | OuiNon}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <span paginator items="releves | orderBy: 'dateHeure': 'reverse'| filter:search"></span>
+
+</div>

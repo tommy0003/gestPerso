@@ -1,0 +1,33 @@
+<legend>Donn&eacute;es du {{ libJour }}:</legend>
+<table class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>Mois</th>
+            <th>Wh HP</th>
+            <th>Wh HC</th>
+            <th>Wh Total</th>
+            <th>% HC</th>
+            <th>Cout horaire (&euro;)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="donnee in donneesJournaliere[jourEnCours]">
+            <td>{{ donnee.libHeure }}     </td>
+            <td>{{ donnee.consoHP | number : 0}}</td>
+            <td>{{ donnee.consoHC | number : 0}}</td>
+            <td>{{ donnee.consoTotale | number : 0 }}</td>
+            <td>{{ donnee.pourcentageHC | pourcentage :2 }}</td>
+            <td>{{ donnee.coutHoraire | currency: "&euro;" }}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th>Totaux</th>
+        <th>{{ sommesEtMoy[jourEnCours].sommeConsoHP | number : 0 }}</th>
+        <th>{{ sommesEtMoy[jourEnCours].sommeConsoHC | number : 0 }}</th>
+        <th>{{ sommesEtMoy[jourEnCours].sommeConsoTotale | number : 0 }}</th>
+        <th>{{ sommesEtMoy[jourEnCours].pourcentageMoyen | pourcentage :2 }}</th>
+        <th>{{ sommesEtMoy[jourEnCours].sommePrixJour | currency: "&euro;" }}</th>
+    </tr>
+    </tfoot>
+</table>

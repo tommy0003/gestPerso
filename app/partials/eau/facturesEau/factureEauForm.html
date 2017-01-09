@@ -1,0 +1,122 @@
+<!--le novalidate permet d'eviter d'avoir la gestion des erreurs natives-->
+<form name="factureEauForm">
+    <legend>Ajout / Modification d'une facture</legend>
+
+    <div class="row form-group">
+        <!-- numero de facture -->
+        <label class="col-md-3" for="numFacture" >N&#186; Facture&nbsp;:</label>
+        <div class="col-md-3">
+            <input type="text" ng-model="facture.numFacture" name="numFacture" placeholder="numero facture" ng-maxlength="25" required>
+        </div>
+        <!-- date de facturation -->
+        <label class="col-md-3" for="dateHeure">Date facturation&nbsp;:</label>
+        <div class="col-md-3">
+             <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="facture.dateFacturation" is-open="$parent.openedDateFacturation" datepicker-options="dateOptions" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="open($event, 'openedDateFacturation')">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <!-- date debut  -->
+        <label class="col-md-3" for="dateDebutConso">Date D&eacute;but&nbsp;:</label>
+        <div class="col-md-3">
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="facture.dateDebut" is-open="$parent.openedDateDebut" datepicker-options="dateOptions" required />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="open($event, 'openedDateDebut')">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+        <!-- date fin  -->
+        <label class="col-md-3" for="dateFinConso">Date Fin &nbsp;:</label>
+        <div class="col-md-3">
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="facture.dateFin" is-open="$parent.openedDateFin" datepicker-options="dateOptions" required />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="open($event, 'openedDateFin')">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+    </div>
+
+
+    <div class="row form-group">
+        <!--ancien index : int-->
+        <label class="col-md-3" for="ancienIndex">Ancien index &nbsp;:</label>
+        <div class="col-md-3">
+            <input ng-model="facture.ancienIndex" name="ancienIndex" placeholder="Ancien index" type="number" required>
+        </div>
+        <!--nouveau index : int-->
+        <label class="col-md-3" for="nouvelIndex">Nouvel index &nbsp;:</label>
+        <div class="col-md-3">
+            <input ng-model="facture.nouvelIndex" name="nouvelIndexHC" placeholder="Nouvel index" type="number" required>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <!--volume : int-->
+        <label class="col-md-3" for="volume">Volume&nbsp;:</label>
+        <div class="col-md-3">
+            <input step="any" ng-model="facture.volume" name="volume" placeholder="volume" type="number" required>
+        </div>
+        <!--montant Distribution : float-->
+        <label class="col-md-3" for="montantDistribution">Montant Distribution&nbsp;:</label>
+        <div class="col-md-3">
+            <input step="any" ng-model="facture.montantDistribution" name="montantDistribution" placeholder="montant Distribution" type="number" required>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <!--montant Assainissement : float-->
+        <label class="col-md-3" for="montantAssainissement">Montant Assainissement&nbsp;:</label>
+        <div class="col-md-3">
+            <input step="any" ng-model="facture.montantAssainissement" name="montantAssainissement" placeholder="montant Assainissement" type="number" required>
+        </div>
+        <!--montant Agence Eau : float-->
+        <label class="col-md-3" for="montantAgenceEau">Montant Agence Eau&nbsp;:</label>
+        <div class="col-md-3">            
+            <input step="any" ng-model="facture.montantAgenceEau" name="montantAgenceEau" placeholder="montant Agence Eau" type="number" required>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <!--montant TVA : float-->
+        <label class="col-md-3" for="montantHTAbo">Montant TVA&nbsp;:</label>
+        <div class="col-md-3">            
+            <input step="any" ng-model="facture.montantTVA" name="montantTVA" placeholder="Montant TVA" type="number" required>
+        </div>
+        <!--montant total TTC : float-->
+        <label class="col-md-3" for="montantTTC">Montant TTC&nbsp;:</label>
+        <div class="col-md-3">            
+            <input step="any" ng-model="facture.montantTTC" name="montantTTC" placeholder="montant TTC" type="number" required>
+        </div>
+    </div>
+    
+    <div class="row form-group">
+        <!-- facture en PDF-->
+        <label class="col-md-3" for="montantTTC">Facture en PDF&nbsp;:</label>
+        <div class="col-md-9">
+            <!--serialize le chemin du fichier-->
+            <input type="text" ng-model="facture.pieceJointe" />
+            <!--gere l'upload en ajax-->
+            <input type="file" ng-file-select="onFileSelect($files)">
+            <button ng-click="upload.abort()">Cancel Upload</button>
+        </div>
+    </div>
+
+    <hr>
+    <button class="btn" ng-click="newFacture()">Nouveau</button> |
+    <button class="btn btn-primary" ng-disabled="factureForm.$invalid" ng-click="saveFacture(facture)">Valider</button> |
+    <hr>
+
+</form>

@@ -1,0 +1,36 @@
+<h2>Gestion annuelle</h2>
+<div ng-controller="GestionAnnuelleController"> <!-- on n'oublie pas la directive ng-controller -->
+
+    <div class="row form-group">
+        <!--le formulaire de choix de l'ann�e-->
+        <form name="choixForm">
+            <!--date et heure du relevé-->
+            <label class="col-md-2" for="dateHeure">Choix de l'ann&eacute;e&nbsp;:</label>
+            <p class="col-md-3 input-group">
+                <input type="text" class="form-control col-md-3" datepicker-popup="yyyy" min-mode="year" datepicker-mode="'year'"
+                       ng-model="dt" is-open="opened" close-on-date-selection="true" datepicker-options="dateOptions"
+                       date-disabled="disabled(date, mode)" show-button-bar="false" show-weeks="false" ng-change="changeAnnee()" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="open($event)">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+        </form>
+    </div>
+    <!-- tableau de l'annee -->
+    <div ng-include="'partials/electricite/gestionAnnuelle/recapitulatifAnnee.html'" ></div>
+
+    <legend>Evolution annuelle consommations :</legend>
+    <form name="myForm">
+        <p>Choix des années à comparer</p>
+        <ul style="width:770px;"> <!-- les annees s'alignent 10 par 10-->
+            <li ng-repeat="annee in anneesGraph" style="display:inline; padding-right: 20px;">
+                <input type="checkbox" ng-model="annee.checked" ng-change="gererCase();" >
+                <span>{{annee.annee}}</span>
+            </li>
+        </ul>
+    </form>
+    <!-- graphique-->
+    <div  ng-include="'partials/electricite/gestionAnnuelle/graphiqueAnnuel.html'" ></div>
+</div>

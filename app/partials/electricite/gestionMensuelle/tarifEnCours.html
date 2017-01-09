@@ -1,0 +1,25 @@
+<table class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th colspan="2">Tarif applicable au 1er {{ libelleAnneeMois }} :</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Tarif mensuel abonnement :</td>
+            <td>{{ tarifApplique.tarifAbo | number : 2 }}</td>
+        </tr>
+        <tr>
+            <td>Tarif unitaire HP :</td>
+            <td>{{ tarifApplique.tarifHP | number : 4 }}</td>
+        </tr>
+        <tr>
+            <td>Tarif unitaire HC :</td>
+            <td>{{ tarifApplique.tarifHC | number : 4 }}</td>
+        </tr>
+        <tr>
+            <td>Nombre de jour du mois :</td>
+            <td>{{ nbJourDuMois }}</td>
+        </tr>
+    </tbody>
+</table>
